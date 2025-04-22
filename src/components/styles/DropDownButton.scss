@@ -1,0 +1,23 @@
+.DropDownButton {
+    .account-icon {
+        cursor: pointer;
+        font-size: 2rem;
+        color: #000;
+
+        &:hover {
+            color: seagreen;
+        }
+    }
+
+    .MuiMenu-paper {
+        background-color: slateblue;
+        color: black;
+    }
+
+    .MuiMenuItem-root {
+        &:hover {
+            background-color: green;
+            color: purple;
+        }
+    }
+}

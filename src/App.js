@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+// src/App.js
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavbarMenu from './components/NavbarMenu';
 import './App.css';
+import HomePageView from './pages/HomePageView';
+import ReelsPageView from './pages/ReelsPageView';
+import GroupCommunityView from './pages/GroupCommunityView';
+import VideoWatchView from './pages/VideoWatchView';
+import FriendsPageView from './pages/FriendsPageView';
+import EventsPageView from './pages/EventsPageView';
+import LoginPageView from './pages/LoginPageView';
+import CreateAccountPageView from './pages/CreateAccountPageView';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <div className="App">
+          <NavbarMenu />
+          <Routes>
+            <Route path="/" element={<HomePageView />} />
+            <Route path="/reels" element={<ReelsPageView />} />
+            <Route path="/videos" element={<VideoWatchView />} /> 
+            <Route path="/group" element={<GroupCommunityView />} />
+            <Route path="/friends" element={<FriendsPageView />} />
+            <Route path="/events" element={<EventsPageView />} />
+            <Route path="/login" element={<LoginPageView />} />
+            <Route path="/create-account" element={<CreateAccountPageView />} />
+          </Routes>
+        </div>
+      </Router>
+    </>
   );
 }
 

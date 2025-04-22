@@ -1,0 +1,43 @@
+.create-vibe {
+    .vibe-card {
+        width: 120px; // Reduced width
+        height: 180px; // Reduced height
+        border-radius: 10px;
+        background-color: rgb(218, 231, 243);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-profile {
+            width: 100%;
+            height: 60%; // Adjusted proportionally
+            object-fit: cover;
+        }
+
+        .create-vibe__container {
+            padding: 0.4rem;
+            text-align: center;
+
+            .add-icon {
+                font-size: 12pt; // Reduced font size
+                font-weight: bold;
+                color: #ffffff;
+                cursor: pointer;
+                background-color: purple;
+                border-radius: 100%;
+                padding: 0.2rem;
+            }
+
+            .create-vibe__title {
+                font-size: 10pt; // Reduced font size
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+    }
+}
