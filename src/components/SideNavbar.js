@@ -12,10 +12,6 @@ const SideNavbar = () => {
 
   return (
     <div className="nav-menu-bar">
-      <div className="logo-container">
-        <h2 className="logo">आpas</h2>
-      </div>
-
       <ul className="nav-menu-list">
         <li className="nav-menu-item">
           <Link to="/" className="nav-menu-link" aria-label="Home">

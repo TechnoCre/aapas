@@ -1,0 +1,91 @@
+.reels-page {
+    height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+    background-color: #000;
+    scroll-snap-type: y mandatory;
+  
+    .reel {
+      height: 100vh;
+      width: 100%;
+      position: relative;
+      scroll-snap-align: start;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      .reel-video {
+        height: 80%;
+        width: 30%;
+        max-height: 100vh;
+        object-fit: cover;
+      }
+  
+      .reel-info {
+        position: absolute;
+        bottom: 80px;
+        left: 16px;
+        color: white;
+        width: calc(100% - 100px);
+        font-size: 0.9rem;
+  
+        .user {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-weight: bold;
+  
+          .subscribe-btn {
+            padding: 4px 12px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            cursor: pointer;
+          }
+        }
+  
+        .caption {
+          margin: 6px 0 2px;
+        }
+  
+        .hashtags {
+          color: #ccc;
+          font-size: 0.8rem;
+        }
+      }
+  
+      .reel-sidebar {
+        position: absolute;
+        right: 16px;
+        bottom: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        color: white;
+        font-size: 0.8rem;
+  
+        .icon-group {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          cursor: pointer;
+  
+          svg {
+            font-size: 1.9rem;
+          }
+  
+          span {
+            margin-top: 4px;
+          }
+        }
+      }
+    }
+  
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  

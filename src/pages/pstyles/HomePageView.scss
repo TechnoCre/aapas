@@ -1,4 +1,22 @@
 .home-page-view {
+    height: 100vh;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0 20px;
+}
+.home-page-content {
+    overflow: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;  
+}
+
+.side-options-bar {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 100vh;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: scroll;
 }

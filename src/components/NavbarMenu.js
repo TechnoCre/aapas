@@ -35,7 +35,7 @@ const NavbarMenu = () => {
             </ul>
 
             <ul className={`nav-list ${menuActive ? 'active' : ''}`}>
-                <li className='nav-item'><Link to='#' className='nav-link'><Message className='message-icon icons' /></Link></li>
+                <li className='nav-item'><Link to='/chats' className='nav-link'><Message className='message-icon icons' /></Link></li>
                 <li className='nav-item'><Link to='/notifications' className="nav-link"><Notifications className='notifications-icon icons' /></Link></li>
                 <li className='nav-item'>
                     <DropDownButton />

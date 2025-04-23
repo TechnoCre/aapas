@@ -1,10 +1,10 @@
 import React from 'react'
+import AccountPage from './AccountPage'
 
 const FriendsPageView = () => {
   return (
     <div>
-      <h2>This is the page of Friends</h2>
-      <p>Friends Page</p>
+      <AccountPage /> 
     </div>
   )
 }

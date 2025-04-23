@@ -11,21 +11,9 @@
   scroll-behavior: smooth;
   scrollbar-color: #f31e1e #f1f1f1;
 
-  .logo-container {
-    .logo {
-      font-size: 24pt;
-      font-family: "Playfair Display", serif;
-      font-optical-sizing: auto;
-      font-weight: 400;
-      font-style: italic;
-      text-align: center;
-      padding: 0.4rem 0;
-    }
-  }
-
   .nav-menu-list {
     list-style: none;
-    padding: 0.5rem;
+    padding: 0.3rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 

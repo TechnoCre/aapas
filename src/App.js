@@ -12,6 +12,7 @@ import FriendsPageView from './pages/FriendsPageView';
 import EventsPageView from './pages/EventsPageView';
 import LoginPageView from './pages/LoginPageView';
 import CreateAccountPageView from './pages/CreateAccountPageView';
+import ChatPage from './pages/ChatPage';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
             <Route path="/friends" element={<FriendsPageView />} />
             <Route path="/events" element={<EventsPageView />} />
             <Route path="/login" element={<LoginPageView />} />
-            <Route path="/create-account" element={<CreateAccountPageView />} />
+            <Route path="/chats" element={<ChatPage />} />
           </Routes>
         </div>
       </Router>

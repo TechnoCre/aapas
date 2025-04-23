@@ -1,0 +1,128 @@
+.friend-request {
+    max-width: 360px;
+    margin: 1rem auto;
+    background-color: #fdfdfd;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+  
+    .friend-request-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+  
+      h2 {
+        font-size: 1.125rem;
+        color: #333;
+        margin: 0;
+      }
+  
+      .see-all {
+        background-color: transparent;
+        border: none;
+        color: #007bff;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: color 0.2s ease;
+  
+        &:hover {
+          color: #0056b3;
+        }
+      }
+    }
+  
+    .friend-request-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+  
+      // SCROLL STYLES
+      max-height: 280px; // Adjust height here (e.g., 4 items * item height + spacing)
+      overflow-y: auto;
+      padding-right: 0.25rem;
+  
+      // Optional custom scrollbar
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+  
+      &::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 3px;
+      }
+  
+      &::-webkit-scrollbar-track {
+        background-color: transparent;
+      }
+  
+      .friend-request-item {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 0.75rem;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  
+        .friend-request-avatar {
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-right: 0.75rem;
+        }
+  
+        .friend-request-info {
+          flex-grow: 1;
+  
+          .friend-request-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #222;
+            text-decoration: none;
+  
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+  
+          .friend-request-message {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 2px;
+          }
+        }
+  
+        .accept-button {
+          margin-left: 0.4rem;
+          padding: 0.35rem 0.6rem;
+          font-size: 0.75rem;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          font-weight: 500;
+          white-space: nowrap;
+          transition: background-color 0.3s ease;
+  
+          &:first-of-type {
+            background-color: #28a745;
+            color: white;
+  
+            &:hover {
+              background-color: #218838;
+            }
+          }
+  
+          &:last-of-type {
+            background-color: #dc3545;
+            color: white;
+  
+            &:hover {
+              background-color: #c82333;
+            }
+          }
+        }
+      }
+    }
+  }
+  
