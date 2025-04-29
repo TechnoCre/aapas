@@ -28,6 +28,7 @@ function App() {
             <Route path="/friends" element={<FriendsPageView />} />
             <Route path="/events" element={<EventsPageView />} />
             <Route path="/login" element={<LoginPageView />} />
+            <Route path="/create-account-page-view" element={<CreateAccountPageView />} />
             <Route path="/chats" element={<ChatPage />} />
           </Routes>
         </div>
