@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Google, Apple } from '@mui/icons-material';
 import './pstyles/CreateAccountPageView.scss';
 
 const CreateAccountPageView = () => {
@@ -42,16 +41,13 @@ const CreateAccountPageView = () => {
 
     return (
         <div className='container'>
-            {/* Logo Section */}
-            <div className='logo' aria-label='Logo'>
+            <div className='logo'>
                 <span className='logo-char'>आ</span>
                 <span className='logo-char'>P</span>
                 <span className='logo-char'>A</span>
                 <span className='logo-char'>S</span>
                 <p className='logo-decribe'>Stay Close, No Matter the Distance.</p>
             </div>
-
-            {/* Sign-Up Form */}
             <div className='login-container'>
                 <div className="heading">Sign Up</div>
                 <form className="form" onSubmit={handleSubmit}>
@@ -93,23 +89,7 @@ const CreateAccountPageView = () => {
                     />
                     <input className="login-button" type="submit" value="Sign Up" />
                 </form>
-
-                {/* Display Message */}
                 {message && <p className="message">{message}</p>}
-
-                {/* Social Sign-In */}
-                <div className="social-account-container">
-                    <span className="title">Or Sign in with</span>
-                    <div className="social-accounts">
-                        <button className="social-button google">
-                            <Google />
-                        </button>
-                        <button className="social-button apple">
-                            <Apple />
-                        </button>
-                    </div>
-                </div>
-                <span className="agreement"><a href="#">Learn user license agreement</a></span>
             </div>
         </div>
     );
