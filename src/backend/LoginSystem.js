@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const registerRoutes = require('../db_s/register'); // Import registration routes
+const User = require('../db_s/userModel'); // Import the User model
 
 const app = express();
 const port = 3000;
@@ -22,47 +24,8 @@ mongoose.connect('mongodb://localhost:27017/myapp', {
 // JWT Secret Key
 const JWT_SECRET = 'your_jwt_secret_key';
 
-// Define a schema for user accounts
-const userSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  phone_number: { type: String, required: true },
-  password: { type: String, required: true },
-});
-
-// Create a model based on the schema
-const User = mongoose.model('User', userSchema);
-
-// Route to handle user registration
-app.post('/register', async (req, res) => {
-  const { email, phone_number, password, cpassword } = req.body;
-
-  // Validate input fields
-  if (!email || !phone_number || !password || !cpassword) {
-    return res.status(400).send('All fields are required.');
-  }
-
-  if (password !== cpassword) {
-    return res.status(400).send('Passwords do not match.');
-  }
-
-  // Hash the password
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  // Create a new user document
-  const newUser = new User({ email, phone_number, password: hashedPassword });
-
-  try {
-    // Save the user to the database
-    await newUser.save();
-    res.status(201).send('User registered successfully!');
-  } catch (error) {
-    if (error.code === 11000) {
-      res.status(400).send('Email already exists.');
-    } else {
-      res.status(500).send('Error registering user.');
-    }
-  }
-});
+// Use the registration routes
+app.use('/api', registerRoutes);
 
 // Route to handle user login
 app.post('/login', async (req, res) => {
