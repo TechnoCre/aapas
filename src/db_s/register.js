@@ -10,29 +10,32 @@ router.post('/register', async (req, res) => {
 
     // Validate input fields
     if (!email || !phone_number || !password || !cpassword) {
-        return res.status(400).send('All fields are required.');
+        return res.status(400).json({ message: 'All fields are required.' });
     }
 
     if (password !== cpassword) {
-        return res.status(400).send('Passwords do not match.');
+        return res.status(400).json({ message: 'Passwords do not match.' });
     }
 
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Create a new user document
-    const newUser = new User({ email, phone_number, password: hashedPassword });
-
     try {
+        // Check if the email already exists
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: 'Email already exists.' });
+        }
+
+        // Hash the password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Create a new user document
+        const newUser = new User({ email, phone_number, password: hashedPassword });
+
         // Save the user to the database
         await newUser.save();
-        res.status(201).send('User registered successfully!');
+        res.status(201).json({ message: 'User registered successfully!' });
     } catch (error) {
-        if (error.code === 11000) {
-            res.status(400).send('Email already exists.');
-        } else {
-            res.status(500).send('Error registering user.');
-        }
+        console.error('Error registering user:', error);
+        res.status(500).json({ message: 'Error registering user.' });
     }
 });
 
