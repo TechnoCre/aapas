@@ -20,7 +20,7 @@ const CreateAccountPageView = () => {
                 <form action="" className="form">
                     <input required className="input" type="email" name="email" id="email" placeholder="E-mail" />
                     <input required className="input" type="number" name="phone_number" id="phone-number" placeholder="Phone Number" />
-                    <input required className="input" type="date" name="dob" id="dob" placeholder="Date of Birth" />
+                    {/* <input required className="input" type="date" name="dob" id="dob" placeholder="Date of Birth" /> */}
                     <input required className="input" type="password" name="password" id="password" placeholder="Password" />
                     <input required className="input" type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" />
                     <input className="login-button" type="submit" value="Sign Up" />
