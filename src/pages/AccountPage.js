@@ -4,13 +4,13 @@ import FeedPost from '../components/FeedPost';
 
 const AccountPage = () => {
   const user = {
-    name: 'John Doe',
-    email: 'johndoe@example.com',
-    username: 'johndoe123',
+    name: 'Moksh Grover',
+    email: 'moksh@example.com',
+    username: 'moksh123',
     profileImage: 'https://i.pravatar.cc/150?img=3',
     coverImage: 'https://via.placeholder.com/800x200', // Cover image
     bio: 'Frontend Developer. Coffee enthusiast. Cat lover.',
-    joined: 'January 2023',
+    joined: 'January 2025',
     friends: 120,
     mutualFriends: 15,
     gallery: [
