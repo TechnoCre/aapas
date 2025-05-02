@@ -21,7 +21,7 @@ function App() {
         <NavbarMenu />
         <Routes>
           {/* Redirect root URL to Login Page */}
-          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/" element={<HomePageView />} />
           <Route path="/login" element={<LoginPageView />} />
           <Route path="/create-account" element={<CreateAccountPageView />} />
           <Route path="/home" element={<HomePageView />} />
