@@ -1,7 +1,7 @@
 // src/App.js
 
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import NavbarMenu from './components/NavbarMenu';
 import './App.css';
 import HomePageView from './pages/HomePageView';
@@ -16,24 +16,24 @@ import ChatPage from './pages/ChatPage';
 
 function App() {
   return (
-    <>
-      <Router>
-        <div className="App">
-          <NavbarMenu />
-          <Routes>
-            <Route path="/" element={<HomePageView />} />
-            <Route path="/reels" element={<ReelsPageView />} />
-            <Route path="/videos" element={<VideoWatchView />} /> 
-            <Route path="/group" element={<GroupCommunityView />} />
-            <Route path="/friends" element={<FriendsPageView />} />
-            <Route path="/events" element={<EventsPageView />} />
-            <Route path="/login" element={<LoginPageView />} />
-            <Route path="/create-account-page-view" element={<CreateAccountPageView />} />
-            <Route path="/chats" element={<ChatPage />} />
-          </Routes>
-        </div>
-      </Router>
-    </>
+    <Router>
+      <div className="App">
+        <NavbarMenu />
+        <Routes>
+          {/* Redirect root URL to Login Page */}
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<LoginPageView />} />
+          <Route path="/create-account" element={<CreateAccountPageView />} />
+          <Route path="/home" element={<HomePageView />} />
+          <Route path="/reels" element={<ReelsPageView />} />
+          <Route path="/videos" element={<VideoWatchView />} />
+          <Route path="/group" element={<GroupCommunityView />} />
+          <Route path="/friends" element={<FriendsPageView />} />
+          <Route path="/events" element={<EventsPageView />} />
+          <Route path="/chats" element={<ChatPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

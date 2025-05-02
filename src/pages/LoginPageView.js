@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import { Google, Apple } from '@mui/icons-material';
 import './pstyles/LoginPageView.scss';
 
@@ -15,7 +16,7 @@ const LoginPageView = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:3000/login', {
+            const response = await fetch('http://localhost:3000/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,7 +38,6 @@ const LoginPageView = () => {
 
     return (
         <div className='container'>
-            {/* Logo Section */}
             <div className='logo' alt='Logo'>
                 <span className='logo-char'>आ</span>
                 <span className='logo-char'>P</span>
@@ -46,7 +46,6 @@ const LoginPageView = () => {
                 <p className='logo-decribe'>Stay Close, No Matter the Distance.</p>
             </div>
 
-            {/* Login Form */}
             <div className='login-container'>
                 <div className="heading">Sign In</div>
                 <form className="form" onSubmit={handleSubmit}>
@@ -72,10 +71,8 @@ const LoginPageView = () => {
                     <input className="login-button" type="submit" value="Sign In" />
                 </form>
 
-                {/* Display Message */}
                 {message && <p className="message">{message}</p>}
 
-                {/* Social Sign-In */}
                 <div className="social-account-container">
                     <span className="title">Or Sign in with</span>
                     <div className="social-accounts">
@@ -87,7 +84,11 @@ const LoginPageView = () => {
                         </button>
                     </div>
                 </div>
-                <span className="agreement"><a href="#">Learn user license agreement</a></span>
+
+                {/* Link to Create Account Page */}
+                <p className="switch-page">
+                    Don't have an account? <Link to="/create-account">Create one</Link>
+                </p>
             </div>
         </div>
     );

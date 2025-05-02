@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import './pstyles/CreateAccountPageView.scss';
 
 const CreateAccountPageView = () => {
@@ -9,6 +10,7 @@ const CreateAccountPageView = () => {
         cpassword: '',
     });
     const [message, setMessage] = useState('');
+    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -17,6 +19,19 @@ const CreateAccountPageView = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setMessage('');
+        setError('');
+
+        // Validate input fields
+        if (!formData.email || !formData.phone_number || !formData.password || !formData.cpassword) {
+            setError('All fields are required.');
+            return;
+        }
+
+        if (formData.password !== formData.cpassword) {
+            setError('Passwords do not match.');
+            return;
+        }
 
         try {
             const response = await fetch('http://localhost:3000/api/register', {
@@ -27,28 +42,31 @@ const CreateAccountPageView = () => {
                 body: JSON.stringify(formData),
             });
 
-            const data = await response.text();
+            const data = await response.json();
             if (response.ok) {
                 setMessage('User registered successfully!');
                 setFormData({ email: '', phone_number: '', password: '', cpassword: '' });
             } else {
-                setMessage(data);
+                setError(data.message || 'Error registering user.');
             }
         } catch (error) {
-            setMessage('Error registering user.');
+            setError('Error registering user.');
         }
     };
 
     return (
-        <div className='container'>
-            <div className='logo'>
-                <span className='logo-char'>आ</span>
-                <span className='logo-char'>P</span>
-                <span className='logo-char'>A</span>
-                <span className='logo-char'>S</span>
-                <p className='logo-decribe'>Stay Close, No Matter the Distance.</p>
+        <div className="container">
+            {/* Logo Section */}
+            <div className="logo">
+                <span className="logo-char">आ</span>
+                <span className="logo-char">P</span>
+                <span className="logo-char">A</span>
+                <span className="logo-char">S</span>
+                <p className="logo-decribe">Stay Close, No Matter the Distance.</p>
             </div>
-            <div className='login-container'>
+
+            {/* Sign-Up Form */}
+            <div className="login-container">
                 <div className="heading">Sign Up</div>
                 <form className="form" onSubmit={handleSubmit}>
                     <input
@@ -89,7 +107,15 @@ const CreateAccountPageView = () => {
                     />
                     <input className="login-button" type="submit" value="Sign Up" />
                 </form>
-                {message && <p className="message">{message}</p>}
+
+                {/* Display Success or Error Message */}
+                {message && <p className="message success">{message}</p>}
+                {error && <p className="message error">{error}</p>}
+
+                {/* Link to Login Page */}
+                <p className="switch-page">
+                    Already have an account? <Link to="/login">Sign In</Link>
+                </p>
             </div>
         </div>
     );
