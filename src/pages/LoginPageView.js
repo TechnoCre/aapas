@@ -1,41 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link for navigation
 import { Google, Apple } from '@mui/icons-material';
 import './pstyles/LoginPageView.scss';
 
 const LoginPageView = () => {
-    const [formData, setFormData] = useState({ email: '', password: '' });
-    const [message, setMessage] = useState('');
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-            const response = await fetch('http://localhost:3000/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            const data = await response.json();
-            if (response.ok) {
-                setMessage('Login successful!');
-                localStorage.setItem('token', data.token); // Store JWT token in localStorage
-            } else {
-                setMessage(data.message || 'Error logging in.');
-            }
-        } catch (error) {
-            setMessage('Error logging in.');
-        }
-    };
-
     return (
         <div className='container'>
             <div className='logo' alt='Logo'>
@@ -48,15 +16,13 @@ const LoginPageView = () => {
 
             <div className='login-container'>
                 <div className="heading">Sign In</div>
-                <form className="form" onSubmit={handleSubmit}>
+                <form className="form">
                     <input
                         required
                         className="input"
                         type="email"
                         name="email"
                         placeholder="E-mail"
-                        value={formData.email}
-                        onChange={handleChange}
                     />
                     <input
                         required
@@ -64,14 +30,10 @@ const LoginPageView = () => {
                         type="password"
                         name="password"
                         placeholder="Password"
-                        value={formData.password}
-                        onChange={handleChange}
                     />
                     <span className="forgot-password"><a href="#">Forgot Password?</a></span>
                     <input className="login-button" type="submit" value="Sign In" />
                 </form>
-
-                {message && <p className="message">{message}</p>}
 
                 <div className="social-account-container">
                     <span className="title">Or Sign in with</span>
