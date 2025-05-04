@@ -1,11 +1,46 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './pstyles/CreateAccountPageView.scss';
 
 const CreateAccountPageView = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone_number: '',
+        password: '',
+        cpassword: '',
+    });
+
+    const [message, setMessage] = useState('');
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log('Form Data:', formData); // Debugging
+
+        try {
+            const response = await fetch('http://localhost:5000/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                setMessage('User registered successfully');
+            } else {
+                setMessage(data.message || 'Registration failed');
+            }
+        } catch (error) {
+            setMessage('Failed to connect to the server: ' + error.message);
+        }
+    };
+
     return (
         <div className="container">
-            {/* Logo Section */}
             <div className="logo">
                 <span className="logo-char">आ</span>
                 <span className="logo-char">P</span>
@@ -14,16 +49,26 @@ const CreateAccountPageView = () => {
                 <p className="logo-decribe">Stay Close, No Matter the Distance.</p>
             </div>
 
-            {/* Sign-Up Form */}
             <div className="login-container">
                 <div className="heading">Sign Up</div>
-                <form className="form">
+                <form className="form" onSubmit={handleSubmit}>
+                    <input
+                        required
+                        className="input"
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        value={formData.name}
+                        onChange={handleChange}
+                    />
                     <input
                         required
                         className="input"
                         type="email"
                         name="email"
                         placeholder="E-mail"
+                        value={formData.email}
+                        onChange={handleChange}
                     />
                     <input
                         required
@@ -31,6 +76,8 @@ const CreateAccountPageView = () => {
                         type="number"
                         name="phone_number"
                         placeholder="Phone Number"
+                        value={formData.phone_number}
+                        onChange={handleChange}
                     />
                     <input
                         required
@@ -38,6 +85,8 @@ const CreateAccountPageView = () => {
                         type="password"
                         name="password"
                         placeholder="Password"
+                        value={formData.password}
+                        onChange={handleChange}
                     />
                     <input
                         required
@@ -45,11 +94,12 @@ const CreateAccountPageView = () => {
                         type="password"
                         name="cpassword"
                         placeholder="Confirm Password"
+                        value={formData.cpassword}
+                        onChange={handleChange}
                     />
                     <input className="login-button" type="submit" value="Sign Up" />
                 </form>
-
-                {/* Link to Login Page */}
+                {message && <p>{message}</p>}
                 <p className="switch-page">
                     Already have an account? <Link to="/login">Sign In</Link>
                 </p>

@@ -1,5 +1,5 @@
 const express = require('express');
-const User = require('./models/Loginuserr'); 
+const User = require('../models/Loginuser'); // Corrected path and model name
 const router = express.Router();
 
 router.post('/login', async (req, res) => {

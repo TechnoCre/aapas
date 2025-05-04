@@ -1,25 +1,25 @@
-// index.js
 const express = require('express');
-const connectDB = require('../db_s/db'); // Updated path to match the correct location
-const userRoutes = require('../db_s/routes/User'); // Updated path to match the correct location
+const cors = require('cors');
+const connectDB = require('../db_s/db');
+const registerRoutes = require('../db_s/routes/Registerroute');
+const userRoutes = require('../db_s/routes/User');
+const loginRoutes = require('../db_s/routes/Loginroute'); // Added login route
 
 const app = express();
 const PORT = 5000;
 
 // Middleware
+app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
 connectDB().then(() => {
-  // Start the server only after a successful DB connection
-  app.listen(PORT, () => {
-    console.log(`🚀 Server started on http://localhost:${PORT}`);
-  });
+    app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+    });
 });
 
 // Routes
+app.use('/api/register', registerRoutes);
 app.use('/api/users', userRoutes);
-
-app.get('/', (req, res) => {
-  res.send('API is running and my name is rahul dabral');
-});
+app.use('/api/login', loginRoutes); // Added login route
