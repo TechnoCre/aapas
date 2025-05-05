@@ -43,7 +43,7 @@ function AppContent() {
         <Route path="/friends" element={<FriendsPageView />} />
         <Route path="/events" element={<EventsPageView />} />
         <Route path="/chats" element={<ChatPage />} />
-        <Route path="/user-details" element={<UsersDetailsForm />} />
+        <Route path="/users-details" element={<UsersDetailsForm />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="*" element={<div>404 - Page Not Found</div>} />
       </Routes>

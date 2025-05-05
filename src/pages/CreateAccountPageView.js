@@ -6,7 +6,7 @@ import './pstyles/CreateAccountPageView.scss';
 const CreateAccountPageView = () => {
     const navigate = useNavigate();
 
-    const handleSignUp = (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const phone = e.target['phone-number'].value;
@@ -19,9 +19,27 @@ const CreateAccountPageView = () => {
         }
 
         const user = { email, phone, password };
-        localStorage.setItem('user', JSON.stringify(user));
-        alert("Account created! Please log in.");
-        navigate('/login');
+
+        try {
+            // Send user data to the backend
+            const response = await fetch('http://localhost:5000/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(user),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert("Account created successfully! Please log in to continue.");
+                navigate('/login'); // Redirect to login page
+            } else {
+                alert(data.message || "Failed to create account. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error during signup:", error);
+            alert("An error occurred. Please try again later.");
+        }
     };
 
     return (

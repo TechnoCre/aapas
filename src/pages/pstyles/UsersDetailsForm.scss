@@ -1,48 +1,64 @@
 .user-details-form-container {
   max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  background: linear-gradient(135deg, #ffffff, #f0f4f8);
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+}
+
+.user-details-form-container:hover {
+  transform: scale(1.02);
 }
 
 .user-details-form-container h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .user-details-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .form-group label {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   color: #555;
+  font-size: 14px;
+  transition: color 0.3s ease;
 }
 
 .form-group input,
 .form-group textarea {
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 16px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  background-color: #ffffff;
 }
 
 textarea {
@@ -52,25 +68,27 @@ textarea {
 .form-buttons {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 
-.submit-button,
+.next-button,
 .skip-button {
-  padding: 10px 15px;
+  padding: 12px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.submit-button {
+.next-button {
   background-color: #007bff;
   color: #fff;
 }
 
-.submit-button:hover {
+.next-button:hover {
   background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
 .skip-button {
@@ -80,4 +98,24 @@ textarea {
 
 .skip-button:hover {
   background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.image-preview {
+  margin-top: 10px;
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
