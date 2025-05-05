@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
+const session = require('express-session');
 
 // Load environment variables
 dotenv.config();
@@ -26,3 +27,9 @@ app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
 
+app.use(session({
+    secret: '4!a5dksdnqdnr34hr42yu2rnnnr2iub',      
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 1000 * 60 * 60 } 
+  }));

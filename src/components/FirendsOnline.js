@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles/FirendsOnline.scss';
+import './styles/FriendsOnline.scss';
 
 const FriendsOnline = () => {
   const [friends] = useState([
@@ -21,8 +21,8 @@ const FriendsOnline = () => {
           <ul>
             {onlineFriends.map(friend => (
               <li key={friend.id} className="friend-item">
+                <span className="status-dot"></span>
                 <p className="friend-name">{friend.name}</p>
-                <div className="status online">Online</div>
               </li>
             ))}
           </ul>
@@ -33,3 +33,4 @@ const FriendsOnline = () => {
 };
 
 export default FriendsOnline;
+

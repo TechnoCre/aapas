@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
-=======
 import React, { useEffect } from 'react';
->>>>>>> rahul
 import { Google, Apple } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
 import './pstyles/LoginPageView.scss';
@@ -56,29 +51,10 @@ const LoginPageView = () => {
 
             <div className="login-container">
                 <div className="heading">Sign In</div>
-<<<<<<< HEAD
-                <form className="form">
-                    <input
-                        required
-                        className="input"
-                        type="email"
-                        name="email"
-                        placeholder="E-mail"
-                    />
-                    <input
-                        required
-                        className="input"
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                    />
-                    <span className="forgot-password"><a href="#">Forgot Password?</a></span>
-=======
                 <form className="form" onSubmit={handleFormSubmit}>
                     <input required className="input" type="email" name="email" placeholder="E-mail" />
                     <input required className="input" type="password" name="password" placeholder="Password" />
                     <span className="forgot-password"><a href="/forgot-password">Forgot Password?</a></span>
->>>>>>> rahul
                     <input className="login-button" type="submit" value="Sign In" />
                 </form>
 
@@ -90,25 +66,14 @@ const LoginPageView = () => {
                     </div>
                 </div>
 
-<<<<<<< HEAD
-                {/* Link to Create Account Page */}
-                <p className="switch-page">
-                    Don't have an account? <Link to="/create-account">Create one</Link>
-                </p>
-=======
                 <div className="create-account-link">
                     <span>Don't have an account? <Link to="/create-account">Create one here</Link></span>
                 </div>
 
                 <span className="agreement"><a href="/user-license-agreement">Learn user license agreement</a></span>
->>>>>>> rahul
             </div>
         </div>
     );
 };
 
-<<<<<<< HEAD
 export default LoginPageView;
-=======
-export default LoginPageView;
->>>>>>> rahul

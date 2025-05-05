@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 // src/App.js
 
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import NavbarMenu from './components/NavbarMenu';
-=======
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
->>>>>>> rahul
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import './App.css';
 
 // Components
@@ -34,14 +28,14 @@ function AppContent() {
   useEffect(() => {
     const user = localStorage.getItem('user');
     setIsLoggedIn(!!user);
-  }, [location.pathname]); // re-check on route change
+  }, [location.pathname]); // Re-check on route change
 
   return (
     <div className="App">
       {/* Show Navbar only if user is logged in */}
       {isLoggedIn && <NavbarMenu />}
       <Routes>
-        <Route path="/" element={<LoginPageView />} />
+        <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginPageView />} />
         <Route path="/create-account" element={<CreateAccountPageView />} />
         <Route path="/home" element={<HomePageView />} />
@@ -62,26 +56,7 @@ function AppContent() {
 function App() {
   return (
     <Router>
-<<<<<<< HEAD
-      <div className="App">
-        <NavbarMenu />
-        <Routes>
-          {/* Redirect root URL to Login Page */}
-          <Route path="/" element={<HomePageView />} />
-          <Route path="/login" element={<LoginPageView />} />
-          <Route path="/create-account" element={<CreateAccountPageView />} />
-          <Route path="/home" element={<HomePageView />} />
-          <Route path="/reels" element={<ReelsPageView />} />
-          <Route path="/videos" element={<VideoWatchView />} />
-          <Route path="/group" element={<GroupCommunityView />} />
-          <Route path="/friends" element={<FriendsPageView />} />
-          <Route path="/events" element={<EventsPageView />} />
-          <Route path="/chats" element={<ChatPage />} />
-        </Routes>
-      </div>
-=======
       <AppContent />
->>>>>>> rahul
     </Router>
   );
 }

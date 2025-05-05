@@ -3,26 +3,6 @@ import './pstyles/AccountPage.scss';
 import FeedPost from '../components/FeedPost';
 
 const AccountPage = () => {
-<<<<<<< HEAD
-  const user = {
-    name: 'Moksh Grover',
-    email: 'moksh@example.com',
-    username: 'moksh123',
-    profileImage: 'https://i.pravatar.cc/150?img=3',
-    coverImage: 'https://via.placeholder.com/800x200', // Cover image
-    bio: 'Frontend Developer. Coffee enthusiast. Cat lover.',
-    joined: 'January 2025',
-    friends: 120,
-    mutualFriends: 15,
-    gallery: [
-      'https://via.placeholder.com/150',
-      'https://via.placeholder.com/150',
-      'https://via.placeholder.com/150',
-      'https://via.placeholder.com/150',
-      'https://via.placeholder.com/150',
-    ],
-  };
-=======
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -34,7 +14,6 @@ const AccountPage = () => {
   if (!user) {
     return <p>Loading...</p>;
   }
->>>>>>> rahul
 
   return (
     <>
