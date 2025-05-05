@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AccountCircle, CameraRoll, Diversity2, Home, Menu, Message, Notifications, OndemandVideo, Person, Search } from '@mui/icons-material';
+import { CameraRoll, Diversity2, Home, Menu, Message, Notifications, OndemandVideo, Person, Search } from '@mui/icons-material';
 import DropDownButton from './DropDownButton';
 import "./styles/NavbarMenu.scss";
 
@@ -32,6 +32,7 @@ const NavbarMenu = () => {
                 <li className='nav-item'><Link to='/friends' className="nav-link"><Person className='person icons' /></Link></li>
                 <li className='nav-item'><Link to='/login' className="nav-link">Login</Link></li>
                 <li className='nav-item'><Link to='/create-account' className="nav-link">Create Account</Link></li>
+                <li className='nav-item'><Link to='/users-details' className="nav-link">User Details</Link></li>
             </ul>
 
             <ul className={`nav-list ${menuActive ? 'active' : ''}`}>
