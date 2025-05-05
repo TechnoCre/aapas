@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Menu, MenuItem } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 import './styles/DropDownButton.scss';
 
 const DropDownButton = () => {
     const [anchorEl, setAnchorEl] = useState(null);
+    const navigate = useNavigate();
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -12,6 +14,13 @@ const DropDownButton = () => {
 
     const handleClose = () => {
         setAnchorEl(null);
+    };
+
+    const handleLogout = () => {
+        // Clear user session
+        localStorage.removeItem('user');
+        alert('You have been logged out.');
+        navigate('/login'); // Redirect to login page
     };
 
     return (
@@ -24,7 +33,7 @@ const DropDownButton = () => {
             >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
         </div>
     );
