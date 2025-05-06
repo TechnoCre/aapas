@@ -13,9 +13,10 @@ import NavbarMenu from '../components/NavbarMenu';
 const HomePageView = () => {
   return (
     <>
-    <div>
-<NavbarMenu />
-</div>
+      {/* <div>
+        <NavbarMenu />
+      </div>
+       */}
       <div className="home-page-view">
         <div className="home-page-content">
           <div className="home-page-header">
