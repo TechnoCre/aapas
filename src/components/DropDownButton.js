@@ -16,6 +16,11 @@ const DropDownButton = () => {
         setAnchorEl(null);
     };
 
+    const handleProfileClick = () => {
+        handleClose(); // Close the dropdown
+        navigate('/account'); // Navigate to the Account Page
+    };
+
     const handleLogout = () => {
         // Clear user session
         localStorage.removeItem('user');
@@ -31,7 +36,7 @@ const DropDownButton = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleProfileClick}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './pstyles/ChatPage.scss'; // Update the path if the file is in a different folder
 
 const mockUsers = [
-  { id: 1, name: 'Alice', avatar: 'https://i.pravatar.cc/100?img=5' },
-  { id: 2, name: 'Bob', avatar: 'https://i.pravatar.cc/100?img=8' },
-  { id: 3, name: 'Charlie', avatar: 'https://i.pravatar.cc/100?img=12' }
+  { id: 1, name: 'Mrs. kitty', avatar: 'https://i.pravatar.cc/100?img=5' },
+  { id: 2, name: 'Tiger', avatar: 'https://i.pravatar.cc/100?img=8' },
+  { id: 3, name: 'John cena', avatar: 'https://i.pravatar.cc/100?img=12' }
 ];
 
 const ChatPage = () => {

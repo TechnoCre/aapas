@@ -27,11 +27,11 @@ const NavbarMenu = () => {
             <ul className={`nav-list ${menuActive ? 'active' : ''}`}>
                 <li className='nav-item'><Link to='/' className="nav-link"><Home className='home-icon icons' /></Link></li>
                 <li className='nav-item'><Link to='/reels' className="nav-link"><CameraRoll className='camera-roll-icon icons' /></Link></li>
-                <li className='nav-item'><Link to='/videos' className="nav-link"><OndemandVideo className='ondemand-video-icon icons' /></Link></li>
+                {/* <li className='nav-item'><Link to='/videos' className="nav-link"><OndemandVideo className='ondemand-video-icon icons' /></Link></li> */}
                 <li className='nav-item'><Link to='/group' className='nav-link'><Diversity2 className='group3-icon icons' /></Link></li>
                 <li className='nav-item'><Link to='/friends' className="nav-link"><Person className='person icons' /></Link></li>
-                <li className='nav-item'><Link to='/login' className="nav-link">Login</Link></li>
-                <li className='nav-item'><Link to='/create-account' className="nav-link">Create Account</Link></li>
+                {/* <li className='nav-item'><Link to='/login' className="nav-link">Login</Link></li> */}
+                {/* <li className='nav-item'><Link to='/create-account' className="nav-link">Create Account</Link></li> */}
                 <li className='nav-item'><Link to='/users-details' className="nav-link">User Details</Link></li>
             </ul>
 

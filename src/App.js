@@ -17,6 +17,7 @@ import CreateAccountPageView from './pages/CreateAccountPageView';
 import ChatPage from './pages/ChatPage';
 import AdminDashboard from './AdminDashboard';
 import UsersDetailsForm from './pages/UsersDetailsForm';
+import AccountPage from './pages/AccountPage';
 
 function AppContent() {
   const location = useLocation();
@@ -45,6 +46,7 @@ function AppContent() {
         <Route path="/chats" element={<ChatPage />} />
         <Route path="/users-details" element={<UsersDetailsForm />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
+        <Route path="/account" element={<AccountPage />} />
         <Route path="*" element={<div>404 - Page Not Found</div>} />
       </Routes>
     </div>

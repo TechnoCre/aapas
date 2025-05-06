@@ -29,8 +29,18 @@ const LoginPageView = () => {
 
             if (response.ok) {
                 localStorage.setItem('user', JSON.stringify(data.user)); // Save user session
-                alert("Login successful!");
-                navigate('/home');
+
+                // Check if user details exist
+                const detailsResponse = await fetch(`http://localhost:5000/api/users/exists/${email}`);
+                const detailsData = await detailsResponse.json();
+
+                if (detailsData.exists) {
+                    alert("Login successful!");
+                    navigate('/home'); // Redirect to home if details exist
+                } else {
+                    alert("Login successful! Please complete your profile.");
+                    navigate('/users-details'); // Redirect to UsersDetailsForm if details do not exist
+                }
             } else {
                 alert(data.message || "Invalid credentials!");
             }

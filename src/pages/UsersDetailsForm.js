@@ -21,7 +21,7 @@ const UsersDetailsForm = () => {
 
   const formFields = [
     { label: 'UserName', name: 'name', type: 'text', placeholder: 'Enter your user name' },
-    { label: 'Email', name: 'email', type: 'email', placeholder: 'Enter your email' },
+    { label: 'Email', name: 'email', type: 'email', placeholder: 'Enter your email', required: true }, // Email is required
     { label: 'Phone Number', name: 'phone', type: 'tel', placeholder: 'Enter your phone number' },
     { label: 'Date of Birth', name: 'dob', type: 'date', placeholder: 'Enter your date of birth' },
     { label: 'Skills', name: 'skills', type: 'text', placeholder: 'Enter your skills (e.g., JavaScript, React)' },
@@ -62,12 +62,57 @@ const UsersDetailsForm = () => {
     }
   };
 
-  const handleSubmit = () => {
-    console.log('Form Data Submitted:', formData);
-    // Save form data to localStorage
-    localStorage.setItem('userDetails', JSON.stringify(formData));
-    alert('Your details have been submitted successfully!');
-    navigate('/account'); // Navigate to the account page
+  const handleSubmit = async () => {
+    try {
+        const response = await fetch('http://localhost:5000/api/users/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert('Your details have been submitted successfully!');
+            localStorage.setItem('userDetails', JSON.stringify({ email: formData.email })); // Save email for AccountPage
+            navigate('/account'); // Navigate to the account page
+        } else {
+            alert(data.message || 'Failed to save user details. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error saving user details:', error);
+        alert('An error occurred. Please try again later.');
+    }
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+        if (!formData.email) {
+            alert('Email is required. Please provide your email.');
+            return;
+        }
+
+        const response = await fetch('http://localhost:5000/api/users/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert('Details saved successfully!');
+            localStorage.setItem('userDetails', JSON.stringify({ email: formData.email })); // Save email for AccountPage
+            navigate('/account'); // Redirect to the account page
+        } else {
+            alert(data.message || 'Failed to save details. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error saving details:', error);
+        alert('An error occurred. Please try again later.');
+    }
   };
 
   const currentField = formFields[step];
@@ -75,7 +120,7 @@ const UsersDetailsForm = () => {
   return (
     <div className="user-details-form-container">
       <h2>User Details Form</h2>
-      <form className="user-details-form">
+      <form className="user-details-form" onSubmit={handleFormSubmit}>
         <div className="form-group">
           <label htmlFor={currentField.name}>{currentField.label}</label>
           {currentField.type === 'textarea' ? (
