@@ -19,13 +19,22 @@ const CreateAccountPageView = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form Data:', formData); // Debugging
+
+        if (formData.password !== formData.cpassword) {
+            setMessage('Passwords do not match');
+            return;
+        }
 
         try {
-            const response = await fetch('http://localhost:5000/api/register', {
+            const response = await fetch('http://localhost:5000/api/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone_number, // Match backend field
+                    password: formData.password,
+                }),
             });
 
             const data = await response.json();
